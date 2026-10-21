@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nishant Dhillon — AI/ML Developer</title>
+<meta name="description" content="Portfolio of Nishant Dhillon — B.Tech CSE (AI & ML) | Deep Learning, Computer Vision, NLP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=General+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf8f4;--bg2:#f2efe8;--bg3:#eae6dd;
+  --surface:#fff;--surface-shadow:0 2px 40px rgba(0,0,0,0.04);
+  --ink:#1a1612;--ink2:#3a3530;--ink3:#6a655e;--ink4:#9a958e;--ink5:#c4bfb6;
+  --accent:#c43e1c;--accent2:#e05a38;--accent-bg:rgba(196,62,28,0.06);
+  --teal:#1a6b5a;--teal-bg:rgba(26,107,90,0.06);
+  --blue:#2456a8;--blue-bg:rgba(36,86,168,0.06);
+  --serif:'Libre Baskerville',Georgia,serif;
+  --sans:'General Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --border:1px solid rgba(0,0,0,0.08);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.7;overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+
+/* PAPER TEXTURE */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:0.018;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* INTRO OVERLAY */
+.intro{position:fixed;inset:0;z-index:10000;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:clip-path 0.9s cubic-bezier(0.76,0,0.24,1);clip-path:inset(0 0 0 0)}
+.intro.out{clip-path:inset(0 0 100% 0)}
+.intro-inner{text-align:center}
+.intro-name{font-family:var(--serif);font-size:clamp(28px,4vw,48px);color:var(--bg);font-weight:700;letter-spacing:-1px;animation:fadeIn 0.6s ease forwards 0.3s;opacity:0}
+.intro-line{width:60px;height:2px;background:var(--accent);margin:20px auto;animation:fadeIn 0.6s ease forwards 0.6s;opacity:0}
+.intro-sub{font-family:var(--mono);font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--ink4);animation:fadeIn 0.6s ease forwards 0.9s;opacity:0}
+@keyframes fadeIn{to{opacity:1}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s}
+nav.scrolled{background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);border-bottom:var(--border)}
+.logo{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-0.5px}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);text-decoration:none;transition:color 0.3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--accent);transition:width 0.3s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a:hover::after{width:100%}
+.mob-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.mob-toggle span{display:block;width:24px;height:1.5px;background:var(--ink);margin:6px 0;transition:0.3s}
+.mob-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.mob-toggle.open span:nth-child(2){opacity:0}
+.mob-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;position:relative}
+.hero-inner{max-width:780px}
+.hero-tag{font-family:var(--mono);font-size:12px;letter-spacing:5px;text-transform:uppercase;color:var(--accent);margin-bottom:28px;opacity:0;animation:slideUp 0.6s ease forwards 1.8s}
+.hero-name{font-family:var(--serif);font-size:clamp(44px,7vw,88px);font-weight:700;line-height:1.05;letter-spacing:-3px;color:var(--ink);opacity:0;animation:slideUp 0.8s ease forwards 2s}
+.hero-name em{font-style:italic;color:var(--accent);font-weight:400}
+.hero-title{font-family:var(--mono);font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--ink3);margin-top:20px;opacity:0;animation:slideUp 0.6s ease forwards 2.3s}
+.hero-desc{font-size:17px;color:var(--ink2);max-width:540px;line-height:1.9;margin-top:28px;font-weight:300;opacity:0;animation:slideUp 0.6s ease forwards 2.5s}
+.hero-desc strong{color:var(--teal);font-weight:600}
+.hero-cta{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;opacity:0;animation:slideUp 0.6s ease forwards 2.7s}
+.btn{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;text-decoration:none;transition:all 0.3s;cursor:pointer;font-weight:500}
+.btn-fill{background:var(--accent);color:#fff;border:1.5px solid var(--accent)}
+.btn-fill:hover{background:transparent;color:var(--accent)}
+.btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--ink5)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.hero-aside{position:absolute;right:48px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-family:var(--mono);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ink4);opacity:0;animation:fadeIn 0.6s ease forwards 3s}
+@keyframes slideUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTIONS */
+.section{padding:120px 48px;max-width:1200px;margin:0 auto}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--ink5),transparent);margin:0}
+.section-tag{font-family:var(--mono);font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.section-tag::before{content:'';width:28px;height:1.5px;background:var(--accent)}
+.section-heading{font-family:var(--serif);font-size:clamp(28px,3.5vw,46px);font-weight:700;line-height:1.2;letter-spacing:-1px;max-width:650px;margin-bottom:56px;color:var(--ink)}
+.section-heading em{font-style:italic;color:var(--accent);font-weight:400}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s cubic-bezier(0.23,1,0.32,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.about-text{font-size:16px;color:var(--ink2);line-height:2;font-weight:300}
+.about-text mark{background:var(--accent-bg);color:var(--accent);padding:2px 6px;font-weight:600;border-radius:3px}
+.about-text .teal{background:var(--teal-bg);color:var(--teal)}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{background:var(--surface);border:var(--border);padding:32px;box-shadow:var(--surface-shadow);transition:all 0.3s}
+.stat:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.06)}
+.stat-num{font-family:var(--serif);font-size:42px;font-weight:700;color:var(--accent);line-height:1}
+.stat-label{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink4);margin-top:12px}
+
+/* EDUCATION */
+.edu-item{border-bottom:var(--border);padding:40px 0;display:grid;grid-template-columns:160px 1fr 1fr;gap:32px;align-items:start;transition:background 0.3s}
+.edu-item:hover{background:var(--accent-bg)}
+.edu-year{font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--accent);padding-top:6px;font-weight:500}
+.edu-role{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--ink);line-height:1.3}
+.edu-place{font-size:14px;color:var(--teal);margin-top:6px;font-weight:500}
+.edu-details{display:flex;flex-direction:column;gap:10px}
+.edu-detail{font-size:14px;color:var(--ink2);line-height:1.7;padding-left:16px;border-left:2px solid var(--bg3);transition:border-color 0.3s}
+.edu-item:hover .edu-detail{border-color:var(--accent)}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.proj{background:var(--surface);border:var(--border);padding:40px;box-shadow:var(--surface-shadow);transition:all 0.4s;position:relative;overflow:hidden}
+.proj::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.proj:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.07)}
+.proj:hover::before{transform:scaleX(1)}
+.proj-num{font-family:var(--serif);font-size:56px;font-weight:700;color:var(--bg3);line-height:0.9;margin-bottom:16px}
+.proj-name{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--ink);line-height:1.35}
+.proj-desc{font-size:13px;color:var(--ink3);line-height:1.85;margin-top:14px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.ptag{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border:1px solid var(--ink5);color:var(--ink3);transition:all 0.3s}
+.ptag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-bg)}
+.proj-impact{margin-top:18px;padding-top:16px;border-top:var(--border);font-family:var(--mono);font-size:11px;color:var(--teal);letter-spacing:1px;font-weight:500}
+
+/* SKILLS */
+.skills-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.sk-block{background:var(--surface);border:var(--border);padding:36px 28px;box-shadow:var(--surface-shadow);transition:all 0.3s;position:relative}
+.sk-block:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.06)}
+.sk-cat{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:20px;padding-bottom:14px;border-bottom:var(--border)}
+.sk-block:nth-child(1) .sk-cat{color:var(--accent)}
+.sk-block:nth-child(2) .sk-cat{color:var(--teal)}
+.sk-block:nth-child(3) .sk-cat{color:var(--blue)}
+.sk-block:nth-child(4) .sk-cat{color:var(--ink3)}
+.sk-list{display:flex;flex-direction:column;gap:12px}
+.sk-name{font-size:14px;color:var(--ink2);font-weight:300;transition:all 0.2s}
+.sk-name:hover{color:var(--accent);transform:translateX(6px)}
+
+/* CONTACT */
+.contact{text-align:center;padding:140px 48px;max-width:700px;margin:0 auto}
+.contact-heading{font-family:var(--serif);font-size:clamp(28px,4vw,48px);font-weight:700;color:var(--ink);letter-spacing:-1px;margin-bottom:16px}
+.contact-heading em{font-style:italic;color:var(--accent);font-weight:400}
+.contact-sub{font-size:15px;color:var(--ink3);margin-bottom:44px;line-height:1.7}
+.contact-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.c-btn{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;border:1.5px solid var(--ink5);color:var(--ink);text-decoration:none;transition:all 0.3s;background:transparent}
+.c-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-bg)}
+.contact-info{display:flex;gap:40px;flex-wrap:wrap;justify-content:center}
+.ci{text-align:center}
+.ci-label{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink4);margin-bottom:8px}
+.ci-val{font-size:14px;color:var(--ink2)}
+.ci-val a{color:var(--ink2);text-decoration:none;transition:color 0.3s}
+.ci-val a:hover{color:var(--accent)}
+
+/* FOOTER */
+footer{padding:32px 48px;border-top:var(--border);display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--ink4);text-transform:uppercase}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.skills-wrap{grid-template-columns:repeat(2,1fr)}.proj-grid{grid-template-columns:1fr}.edu-item{grid-template-columns:130px 1fr;gap:20px}.edu-details{grid-column:1/-1}}
+@media(max-width:768px){
+  nav{padding:16px 24px}.nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(250,248,244,0.97);backdrop-filter:blur(20px);justify-content:center;align-items:center;gap:28px;z-index:999}
+  .nav-links.open a{font-size:16px;color:var(--ink)}.mob-toggle{display:block;z-index:1001}
+  .hero{padding:100px 24px 60px}.hero-aside{display:none}.section{padding:80px 24px}
+  .about-grid{grid-template-columns:1fr;gap:40px}.edu-item{grid-template-columns:1fr;gap:8px}
+  .skills-wrap{grid-template-columns:1fr}.proj-grid{grid-template-columns:1fr}
+  .contact{padding:80px 24px}.contact-info{gap:24px}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:24px}
+  .hero-cta{flex-direction:column}.btn{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- INTRO -->
+<div class="intro" id="intro">
+  <div class="intro-inner">
+    <div class="intro-name">Nishant Dhillon</div>
+    <div class="intro-line"></div>
+    <div class="intro-sub">AI / ML Developer</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#hero" class="logo">N<span>.</span>D</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="mob-toggle" id="mobToggle" onclick="toggleM()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">B.Tech CSE — AI & ML — Manav Rachna University</div>
+    <h1 class="hero-name">Nishant<br><em>Dhillon</em></h1>
+    <div class="hero-title">AI/ML Developer · Full-Stack Engineer · Data Automation</div>
+    <p class="hero-desc">4th-year AI & ML student building <strong>production-grade intelligent systems</strong> — from crude oil forecasting to full-stack ERP platforms, computer vision, and satellite imagery applications.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-fill">Get in Touch</a>
+      <a href="#projects" class="btn btn-outline">View Projects</a>
+    </div>
+  </div>
+  <div class="hero-aside">Rewari, Haryana · 2026</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-tag rv">About</div>
+  <h2 class="section-heading rv">Building <em>intelligent systems</em> that solve real-world problems.</h2>
+  <div class="about-grid">
+    <div class="about-text rv">
+      Motivated 4th-year <mark>B.Tech CSE (AI & ML)</mark> student at Manav Rachna University, Faridabad, with hands-on experience across five industrial internships spanning automotive manufacturing, IT digital transformation, and full-stack SaaS development. Skilled in <mark class="teal">deep learning, computer vision, NLP, and full-stack AI development</mark>. I've built 12+ production systems spanning crude oil forecasting, ANPR access control, satellite imagery analysis, a full-stack ERP/CRM platform, and secure web applications — passionate about engineering AI and software that works in the real world.
+    </div>
+    <div class="stats-row rv">
+      <div class="stat"><div class="stat-num">12+</div><div class="stat-label">AI/ML & Full-Stack Projects</div></div>
+      <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Certifications</div></div>
+      <div class="stat"><div class="stat-num">7.1</div><div class="stat-label">CGPA</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">Internships</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION & EXPERIENCE -->
+<section class="section" id="education">
+  <div class="section-tag rv">Education & Experience</div>
+  <h2 class="section-heading rv">From classrooms to <em>production-grade</em> AI systems.</h2>
+  <div>
+    <div class="edu-item rv">
+      <div class="edu-year">2023 — 2027</div>
+      <div><div class="edu-role">B.Tech — CSE (AI & ML)</div><div class="edu-place">Manav Rachna University, Faridabad</div></div>
+      <div class="edu-details">
+        <div class="edu-detail">CGPA: 7.1 / 10 — specializing in AI & Machine Learning, now in 4th year</div>
+        <div class="edu-detail">Built 12+ production-grade AI/ML & full-stack systems spanning NLP, CV, forecasting & web apps</div>
+        <div class="edu-detail">Active in inter-university hackathons and coding competitions</div>
+      </div>
+    </div>
+    <div class="edu-item rv">
+      <div class="edu-year">Jun — Jul 2026</div>
+      <div><div class="edu-role">Industrial Intern</div><div class="edu-place">Honda Cars India Ltd. (TKR Plant), Tapukara, Rajasthan</div></div>
+      <div class="edu-details">
+        <div class="edu-detail">Functional testing & validation of 103 Hand Scanner devices for manufacturing accuracy</div>
+        <div class="edu-detail">Automated operational data management & reporting in Excel, reducing manual effort</div>
+        <div class="edu-detail">Created AI-powered editable PowerPoint decks and business presentation materials</div>
+        <div class="edu-detail">Designed & maintained employee birthday tracking chart, improving HR record management</div>
+        <div class="edu-detail">Supported 5S & safety initiatives with visual compliance tagging</div>
+        <div class="edu-detail">Collaborated with cross-functional teams in digital transformation & documentation standardization</div>
+      </div>
+    </div>
+    <div class="edu-item rv">
+      <div class="edu-year">Jun — Aug 2026</div>
+      <div><div class="edu-role">Online Intern — Full-Stack Developer</div><div class="edu-place">Autrob Technologies Pvt. Ltd., New Delhi</div></div>
+      <div class="edu-details">
+        <div class="edu-detail">Built InteriorERP — a full-stack ERP & CRM platform for interior design businesses</div>
+        <div class="edu-detail">Frontend: Next.js 15, React 19, TypeScript, Tailwind CSS, ShadCN UI</div>
+        <div class="edu-detail">Backend: NestJS, REST APIs, Prisma ORM, PostgreSQL, JWT + RBAC auth</div>
+        <div class="edu-detail">Integrated PDF generation, file upload/download with cloud storage abstraction</div>
+        <div class="edu-detail">Playwright E2E testing, Docker-based PostgreSQL, scalable monorepo architecture</div>
+      </div>
+    </div>
+    <div class="edu-item rv">
+      <div class="edu-year">Jun 2025</div>
+      <div><div class="edu-role">Industrial Intern — IT / Digital Transformation</div><div class="edu-place">Mushashi Auto Parts India Ltd., Bawal, Rewari</div></div>
+      <div class="edu-details">
+        <div class="edu-detail">Built a Microsoft 365-based Guest House Booking & Approval Application</div>
+        <div class="edu-detail">Implemented department-wise HOD approval/rejection workflow with automated routing</div>
+        <div class="edu-detail">Configured automated notifications for request lifecycle — submission, approval, rejection & status updates</div>
+        <div class="edu-detail">Digitized a manual administrative process, improving transparency & turnaround time</div>
+      </div>
+    </div>
+    <div class="edu-item rv">
+      <div class="edu-year">Jun 2024</div>
+      <div><div class="edu-role">IT Industrial Trainee</div><div class="edu-place">Asahi India Glass Ltd. (AIS), Rewari</div></div>
+      <div class="edu-details">
+        <div class="edu-detail">4-week training in the IT division of a leading automotive glass manufacturer</div>
+        <div class="edu-detail">Enterprise IT systems, data workflows & industrial automation processes</div>
+        <div class="edu-detail">Rated 'Very Good' in overall performance by the organisation</div>
+      </div>
+    </div>
+    <div class="edu-item rv">
+      <div class="edu-year">Online</div>
+      <div><div class="edu-role">Online Intern</div><div class="edu-place">Internspot — Remote</div></div>
+      <div class="edu-details">
+        <div class="edu-detail">Built a Custom Object Image Classification System using React, Express & Gemini multimodal API</div>
+        <div class="edu-detail">Developed an Intern Chatbot — AI conversational web app using React, TypeScript & Google Gemini API</div>
+      </div>
+    </div>
+    <div class="edu-item rv">
+      <div class="edu-year">2023</div>
+      <div><div class="edu-role">Class XII — CBSE</div><div class="edu-place">Score: 72%</div></div>
+      <div class="edu-details"><div class="edu-detail">Science stream — Mathematics & Computer Science</div></div>
+    </div>
+    <div class="edu-item rv">
+      <div class="edu-year">2021</div>
+      <div><div class="edu-role">Class X — CBSE</div><div class="edu-place">Score: 86%</div></div>
+      <div class="edu-details"><div class="edu-detail">Strong foundation in science and mathematics</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-tag rv">Projects</div>
+  <h2 class="section-heading rv">Where <em>AI models</em> meet real-world deployment.</h2>
+  <div class="proj-grid">
+    <div class="proj rv">
+      <div class="proj-num">01</div>
+      <div class="proj-name">OilSense AI — Crude Oil Price Prediction</div>
+      <div class="proj-desc">Hybrid LSTM + Gradient Boosting system combining FinBERT news sentiment with market data. Self-updating pipeline with live NewsAPI integration and an interactive forecast dashboard.</div>
+      <div class="proj-tags"><span class="ptag">PyTorch</span><span class="ptag">FinBERT</span><span class="ptag">LSTM</span><span class="ptag">NewsAPI</span></div>
+      <div class="proj-impact">↗ IEEE paper, technical report & research poster published</div>
+    </div>
+    <div class="proj rv">
+      <div class="proj-num">02</div>
+      <div class="proj-name">SmartGate AI — ANPR & Access Control</div>
+      <div class="proj-desc">AI-powered automatic number plate recognition for vehicle access control using YOLOv8 and EasyOCR. Real-time detection with automated allow/deny decisions against a registered vehicle database.</div>
+      <div class="proj-tags"><span class="ptag">YOLOv8</span><span class="ptag">EasyOCR</span><span class="ptag">Flask</span><span class="ptag">OpenCV</span></div>
+      <div class="proj-impact">↗ 91.7% recognition accuracy — IEEE paper published</div>
+    </div>
+    <div class="proj rv">
+      <div class="proj-num">03</div>
+      <div class="proj-name">InteriorERP — SaaS ERP & CRM Platform</div>
+      <div class="proj-desc">Full-stack ERP/CRM digitizing the workflow of interior design & manufacturing businesses. Lead, client, quotation, project, invoice & payment management with secure RBAC auth.</div>
+      <div class="proj-tags"><span class="ptag">Next.js</span><span class="ptag">NestJS</span><span class="ptag">PostgreSQL</span><span class="ptag">Prisma</span></div>
+      <div class="proj-impact">↗ Production-ready with AWS S3 & Docker deployment</div>
+    </div>
+    <div class="proj rv">
+      <div class="proj-num">04</div>
+      <div class="proj-name">Garbage Detection & Geo-Tagging System</div>
+      <div class="proj-desc">AI-powered waste monitoring detecting garbage category & quantity from images, with GPS tagging and interactive map visualization for municipal smart-city monitoring.</div>
+      <div class="proj-tags"><span class="ptag">YOLO</span><span class="ptag">FastAPI</span><span class="ptag">React</span><span class="ptag">Leaflet Maps</span></div>
+      <div class="proj-impact">↗ Identifies plastic, organic & mixed waste hotspots</div>
+    </div>
+    <div class="proj rv">
+      <div class="proj-num">05</div>
+      <div class="proj-name">SatQuery AI — Satellite Imagery Assistant</div>
+      <div class="proj-desc">Natural language satellite imagery assistant with TF-IDF centroid routing for five query categories. Supports visual QA, caption retrieval, grounding, change detection & land-cover metadata using BigEarthNet and CDVQA datasets.</div>
+      <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">TF-IDF</span><span class="ptag">rasterio</span><span class="ptag">BigEarthNet</span></div>
+      <div class="proj-impact">↗ Supports optical & SAR imagery with evaluation metrics</div>
+    </div>
+    <div class="proj rv">
+      <div class="proj-num">06</div>
+      <div class="proj-name">Secure Online Voting System</div>
+      <div class="proj-desc">Election management web app with JWT auth, voter eligibility workflows, election status transitions, and SHA-256 ballot integrity hashes with chained audit logs for security tracking.</div>
+      <div class="proj-tags"><span class="ptag">React</span><span class="ptag">Express</span><span class="ptag">PostgreSQL</span><span class="ptag">JWT</span></div>
+      <div class="proj-impact">↗ Database transactions prevent duplicate voting</div>
+    </div>
+    <div class="proj rv">
+      <div class="proj-num">07</div>
+      <div class="proj-name">Honda — Candidate Assessment Portal</div>
+      <div class="proj-desc">Assessment portal prototype with admin screens to create & organize modules, automated grading with score breakdowns, configurable passing criteria, and downloadable PDF reports.</div>
+      <div class="proj-tags"><span class="ptag">React</span><span class="ptag">TypeScript</span><span class="ptag">Express</span><span class="ptag">jsPDF</span></div>
+      <div class="proj-impact">↗ Module-wise answer reviews & assessment history</div>
+    </div>
+    <div class="proj rv">
+      <div class="proj-num">08</div>
+      <div class="proj-name">Commodity Price Prediction System</div>
+      <div class="proj-desc">ML-based commodity price forecasting using historical market data and time-series analysis. LSTM + XGBoost models with feature engineering and performance dashboards.</div>
+      <div class="proj-tags"><span class="ptag">LSTM</span><span class="ptag">XGBoost</span><span class="ptag">pandas</span><span class="ptag">Matplotlib</span></div>
+      <div class="proj-impact">↗ Dashboards for trend & forecast decision support</div>
+    </div>
+    <div class="proj rv">
+      <div class="proj-num">09</div>
+      <div class="proj-name">Spam Mail Classification System</div>
+      <div class="proj-desc">ML-based email classifier distinguishing spam from legitimate mail, with a complete NLP preprocessing pipeline: tokenization, stop-word removal, and feature extraction.</div>
+      <div class="proj-tags"><span class="ptag">scikit-learn</span><span class="ptag">NLTK</span><span class="ptag">NLP</span><span class="ptag">pandas</span></div>
+      <div class="proj-impact">↗ Reusable text-processing workflow for email filtering</div>
+    </div>
+    <div class="proj rv">
+      <div class="proj-num">10</div>
+      <div class="proj-name">Edible vs Non-Edible Plant Classifier</div>
+      <div class="proj-desc">CNN-based image classification identifying whether a plant is edible from a single photograph, with an intuitive upload interface for instant safety predictions.</div>
+      <div class="proj-tags"><span class="ptag">TensorFlow</span><span class="ptag">CNN</span><span class="ptag">OpenCV</span><span class="ptag">Flask</span></div>
+      <div class="proj-impact">↗ Built for educational & outdoor safety use cases</div>
+    </div>
+    <div class="proj rv">
+      <div class="proj-num">11</div>
+      <div class="proj-name">Intern Chatbot — AI Conversational App</div>
+      <div class="proj-desc">Conversational web app using React, TypeScript, Express & Google Gemini API. Features persistent chat management, Markdown rendering, configurable system instructions & JSON import/export.</div>
+      <div class="proj-tags"><span class="ptag">React</span><span class="ptag">TypeScript</span><span class="ptag">Gemini API</span><span class="ptag">Express</span></div>
+      <div class="proj-impact">↗ Server-side API key handling & conversation persistence</div>
+    </div>
+    <div class="proj rv">
+      <div class="proj-num">12</div>
+      <div class="proj-name">Custom Object Image Classifier</div>
+      <div class="proj-desc">Image classification app using React, Express & Gemini multimodal API. Classifies across ten configurable categories with confidence levels, explanations & unknown-class fallback handling.</div>
+      <div class="proj-tags"><span class="ptag">React</span><span class="ptag">Gemini API</span><span class="ptag">Multer</span><span class="ptag">TypeScript</span></div>
+      <div class="proj-impact">↗ 10 configurable categories with validation & previews</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-tag rv">Skills</div>
+  <h2 class="section-heading rv">The <em>tech stack</em> powering the intelligence.</h2>
+  <div class="skills-wrap">
+    <div class="sk-block rv"><div class="sk-cat">Programming & Web</div><div class="sk-list"><div class="sk-name">Python</div><div class="sk-name">SQL</div><div class="sk-name">TypeScript / JavaScript</div><div class="sk-name">Next.js / React</div><div class="sk-name">NestJS / Express</div><div class="sk-name">Tailwind CSS / ShadCN</div><div class="sk-name">PostgreSQL / Prisma</div></div></div>
+    <div class="sk-block rv"><div class="sk-cat">ML / Deep Learning</div><div class="sk-list"><div class="sk-name">PyTorch</div><div class="sk-name">TensorFlow</div><div class="sk-name">scikit-learn</div><div class="sk-name">LSTM / CNN / XGBoost</div><div class="sk-name">FinBERT / NLTK</div><div class="sk-name">YOLOv8 / OpenCV / EasyOCR</div></div></div>
+    <div class="sk-block rv"><div class="sk-cat">Productivity & Business</div><div class="sk-list"><div class="sk-name">Advanced Excel & Power Query</div><div class="sk-name">PowerPoint & Executive Decks</div><div class="sk-name">MS 365 Workflow Automation</div><div class="sk-name">Technical Documentation</div><div class="sk-name">Prompt Engineering</div><div class="sk-name">Business Process Automation</div></div></div>
+    <div class="sk-block rv"><div class="sk-cat">Tools & Platforms</div><div class="sk-list"><div class="sk-name">Git & GitHub</div><div class="sk-name">Docker</div><div class="sk-name">Socket.io</div><div class="sk-name">Playwright Testing</div><div class="sk-name">ChatGPT / Claude AI</div><div class="sk-name">Google AI Studio (Gemini)</div><div class="sk-name">GitHub Copilot</div></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-tag rv" style="justify-content:center">Contact</div>
+  <h2 class="contact-heading rv">Let's build something <em>remarkable</em>.</h2>
+  <p class="contact-sub rv">Open to internships, collaborations & AI/ML opportunities.</p>
+  <div class="contact-btns rv">
+    <a href="mailto:nishantdhillon3026@gmail.com" class="c-btn">Email</a>
+    <a href="tel:+919034503026" class="c-btn">Call</a>
+    <a href="https://github.com/NISHANT3026" target="_blank" class="c-btn">GitHub</a>
+    <a href="https://linkedin.com/in/nishant-dhillon-34b166284" target="_blank" class="c-btn">LinkedIn</a>
+  </div>
+  <div class="contact-info rv">
+    <div class="ci"><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:nishantdhillon3026@gmail.com">nishantdhillon3026@gmail.com</a></div></div>
+    <div class="ci"><div class="ci-label">Phone</div><div class="ci-val"><a href="tel:+919034503026">+91 9034503026</a></div></div>
+    <div class="ci"><div class="ci-label">Location</div><div class="ci-val">Rewari, Haryana</div></div>
+  </div>
+</section>
+
+<footer><span>Nishant Dhillon © 2026</span><span>Designed with care</span></footer>
+
+<script>
+// Intro clip-path reveal
+setTimeout(()=>{document.getElementById('intro').classList.add('out')},1600);
+// Nav scroll
+window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50)});
+// Reveal
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+// Mobile
+function toggleM(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('mobToggle').classList.toggle('open')}
+</script>
+</body>
+</html>
